@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ffluxx.com/sitemap.xml
+Sitemap: https://studio.ffluxx.com/sitemap.xml
