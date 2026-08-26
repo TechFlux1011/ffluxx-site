@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ffluxxSoft — apps for problems nobody bothered to solve</title>
-<meta name="description" content="ffluxxSoft builds apps and tools. Second Home and Plant Guide, both in development. Part of ffluxx.">
+<meta name="description" content="ffluxxSoft builds its own apps and software for other companies. Websites from $1,400, apps quoted individually. Part of ffluxx.">
 <meta name="theme-color" content="#0E1220">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ffluxxSoft">
 <meta property="og:title" content="ffluxxSoft — apps for problems nobody bothered to solve">
-<meta property="og:description" content="Two apps in development: Second Home and Plant Guide. Part of ffluxx.">
+<meta property="og:description" content="Our own apps, and software built for other companies. Websites from $1,400.">
 <meta property="og:url" content="https://soft.ffluxx.com/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -20,7 +20,7 @@
 <meta property="og:image:alt" content="The ffluxxSoft mark: two mirrored violet waves crossing to form two X's.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ffluxxSoft — apps for problems nobody bothered to solve">
-<meta name="twitter:description" content="Two apps in development: Second Home and Plant Guide. Part of ffluxx.">
+<meta name="twitter:description" content="Our own apps, and software built for other companies. Websites from $1,400.">
 <meta name="twitter:image" content="https://soft.ffluxx.com/og.png">
 <link rel="canonical" href="https://soft.ffluxx.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -240,6 +240,21 @@ a{color:inherit;text-decoration:none;}
 .btn .arw{transition:transform .22s ease;}
 .btn:hover .arw{transform:translateX(4px);}
 
+/* ---------- hero call to action ----------
+   The hero used to describe the two first-party apps, which the entry cards
+   and the app section both already do. This slot is worth more pointed at
+   the audience that arrives ready to spend money. */
+.hero-cta{
+  border:1px solid color-mix(in srgb,var(--accent) 32%,var(--line));
+  border-radius:3px;padding:clamp(18px,2.4vw,26px);
+  background:rgba(123,92,255,.05);
+  transition:border-color .25s ease;
+}
+.hero-cta:hover{border-color:color-mix(in srgb,var(--accent) 55%,var(--line));}
+.hero-cta .eyebrow{color:var(--accent);}
+.hero-cta p{color:var(--muted);font-size:15px;line-height:1.5;margin:10px 0 18px;max-width:40ch;}
+.hero-cta p b{color:var(--paper);font-weight:500;}
+
 /* ---------- what we're working on: two entry cards ---------- */
 .working{padding:clamp(42px,6.5vw,78px) 0 clamp(6px,1vw,14px);}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,20px);}
@@ -418,11 +433,13 @@ a{color:inherit;text-decoration:none;}
           <h1>Apps for problems <em>nobody bothered to solve.</em></h1>
           <a class="parent-link" href="https://ffluxx.com">part of ffluxx <span class="arw">↗</span></a>
         </div>
-        <p>
-          Two apps, both being built now. <strong>Neither is available yet</strong> — you can
-          read what they do, follow the work, and leave your email if you want to know
-          when there's something to try.
-        </p>
+        <div class="hero-cta">
+          <span class="eyebrow">Need something built?</span>
+          <p>We take client work as well as our own. <b>Websites from $1,400</b>, apps
+            quoted individually — with the rates and the process published rather than
+            hidden behind a call.</p>
+          <a class="btn" href="/services/">See services and rates <span class="arw">→</span></a>
+        </div>
       </div>
     </div>
   </section>
