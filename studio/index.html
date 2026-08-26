@@ -71,9 +71,8 @@ a{color:inherit;text-decoration:none;}
 /* ---------- header ---------- */
 .site-head{
   position:sticky;top:0;z-index:50;
-  -webkit-backdrop-filter:blur(14px);
   backdrop-filter:blur(14px);background:rgba(14,18,32,.78);
-  /* border-bottom:1px solid var(--line); */
+  border-bottom:1px solid var(--line);
 }
 .site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:66px;}
 .brand{display:flex;align-items:center;gap:11px;}
@@ -81,66 +80,17 @@ a{color:inherit;text-decoration:none;}
 .brand svg path{shape-rendering:geometricPrecision;}
 .brand-name{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.02em;}
 .brand-name b{font-weight:800;color:var(--accent);}
-
-/* split wordmark — each half is its own destination.
-   Links cannot nest, so the two halves are sibling anchors set flush
-   together; the word still reads as one. Hovering tracks the letters
-   out and names where that half goes. */
-.lockup{display:flex;align-items:center;position:relative;}
-.part{display:inline-flex;align-items:center;border-radius:2px;}
-.part-parent{gap:11px;}
-.part .word{
-  font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.02em;
-  display:inline-block;
-  transition:letter-spacing .3s cubic-bezier(.2,.7,.3,1), color .2s ease;
-}
-.part-parent   .word{color:var(--paper);}
-.part-division .word{color:var(--accent);}
-.part:hover .word,
-.part:focus-visible .word{letter-spacing:.055em;}
-.part-parent:hover .word{color:#FFFFFF;}
-.dest{
-  position:absolute;left:100%;top:50%;margin-left:16px;
-  transform:translateY(-50%) translateX(-5px);
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--accent);white-space:nowrap;opacity:0;pointer-events:none;
-  transition:opacity .22s ease, transform .22s ease;
-}
-.part:hover .dest,
-.part:focus-visible .dest{opacity:1;transform:translateY(-50%) translateX(0);}
-/* no hover on touch, and no room for the readout beside the nav */
-@media (max-width:980px){.dest{display:none;}}
 .site-nav{display:flex;align-items:center;gap:26px;}
 .site-nav a{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:color .2s ease;}
 .site-nav a:hover{color:var(--paper);}
 @media (max-width:680px){.site-nav a.hide-sm{display:none;}}
 
-/* ---------- scroll progress wave ----------
-   Sits below the navbar rather than inside it: sticky at the header's
-   height, transparent background, so the page scrolls past behind it. */
-.scrollwave{
-  position:sticky;top:66px;z-index:49;
-  height:18px;width:100%;overflow:hidden;
-  background:transparent;
-  opacity:0;transition:opacity .45s ease;pointer-events:none;
-}
-/* The header's blur carries on down behind the band, then tapers away.
-   Masking a backdrop-filter layer fades the blur itself, not the wave —
-   so the wave stays at full strength while the frosting dissolves. The
-   tint is lighter than the header's .78 so more of the page reads
-   through here than up in the navbar. */
-.scrollwave::before{
-  content:"";position:absolute;inset:0;z-index:0;
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  background:rgba(14,18,32,.42);
-  -webkit-mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.55) 50%,transparent 100%);
-          mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.55) 50%,transparent 100%);
-}
+/* ---------- scroll progress wave ---------- */
+.scrollwave{height:18px;width:100%;overflow:hidden;opacity:0;transition:opacity .45s ease;pointer-events:none;}
 .scrollwave.on{opacity:1;}
-.scrollwave svg{display:block;width:100%;height:18px;position:relative;z-index:1;}
+.scrollwave svg{display:block;width:100%;height:18px;}
 .scrollwave path{fill:none;stroke-width:1.5;stroke-linecap:round;shape-rendering:geometricPrecision;}
-.sw-ghost path{stroke-opacity:0;}
+.sw-ghost path{stroke-opacity:.13;}
 
 /* ---------- hero ---------- */
 .hero{padding:clamp(52px,9vw,104px) 0 clamp(34px,5vw,56px);}
@@ -289,28 +239,20 @@ a{color:inherit;text-decoration:none;}
 
 <header class="site-head">
   <div class="wrap">
-    <div class="lockup">
-      <a class="part part-parent" href="https://ffluxx.com" aria-label="ffluxx — the company site">
-    <svg width="36" height="20" viewBox="0 0 36 20" aria-hidden="true">
-    <path id="mini-a" stroke="#E4A93F" stroke-width="1.6" fill="none" stroke-linecap="round"></path>
-    <path id="mini-b" stroke="#E9DC4E" stroke-width="1.6" fill="none" stroke-linecap="round"></path>
-    </svg>
-        <span class="word">ffluxx</span>
-        <span class="dest" aria-hidden="true">ffluxx.com &#8599;</span>
-      </a><a class="part part-division" href="https://studio.ffluxx.com" aria-label="ffluxxStudio — this division's home">
-        <span class="word">Studio</span>
-        <span class="dest" aria-hidden="true">studio.ffluxx.com &#8599;</span>
-      </a>
-    </div>
+    <a class="brand" href="#top" aria-label="ffluxxStudio home">
+      <svg width="36" height="20" viewBox="0 0 36 20" aria-hidden="true">
+        <path id="mini-a" stroke="#E4A93F" stroke-width="1.6" fill="none" stroke-linecap="round"></path>
+        <path id="mini-b" stroke="#E9DC4E" stroke-width="1.6" fill="none" stroke-linecap="round"></path>
+      </svg>
+      <span class="brand-name">ffluxx<b>Studio</b></span>
+    </a>
     <nav class="site-nav">
       <a href="#games">Games</a>
       <a href="#follow" class="hide-sm">Follow</a>
       <a href="#devlog" class="hide-sm">Devlog</a>
     </nav>
   </div>
-  </header>
-
-<div class="scrollwave" id="scrollwave" role="progressbar" aria-label="Page progress"
+  <div class="scrollwave" id="scrollwave" role="progressbar" aria-label="Page progress"
        aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
     <svg id="swSvg" aria-hidden="true" preserveAspectRatio="none">
       <defs><clipPath id="swClip"><rect id="swRect" x="0" y="0" width="0" height="18"></rect></clipPath></defs>
@@ -324,7 +266,7 @@ a{color:inherit;text-decoration:none;}
       </g>
     </svg>
   </div>
-
+</header>
 
 <main id="top">
 
