@@ -68,8 +68,8 @@ a{color:inherit;text-decoration:none;}
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
   background:rgba(14,18,32,.78);
-  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 78%,rgba(0,0,0,.55) 89%,transparent 100%);
-          mask-image:linear-gradient(to bottom,#000 0,#000 78%,rgba(0,0,0,.55) 89%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 58%,rgba(0,0,0,.95) 68%,rgba(0,0,0,.82) 76%,rgba(0,0,0,.62) 84%,rgba(0,0,0,.38) 91%,rgba(0,0,0,.17) 96%,transparent 100%);
+          mask-image:linear-gradient(to bottom,#000 0,#000 58%,rgba(0,0,0,.95) 68%,rgba(0,0,0,.82) 76%,rgba(0,0,0,.62) 84%,rgba(0,0,0,.38) 91%,rgba(0,0,0,.17) 96%,transparent 100%);
 }
 .site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:66px;position:relative;z-index:1;}
 .brand svg{display:block;overflow:hidden;}
@@ -129,12 +129,35 @@ a{color:inherit;text-decoration:none;}
   letter-spacing:-.03em;margin:0;}
 .lede-wide{color:var(--paper);font-size:clamp(16px,1.8vw,19px);max-width:58ch;margin:0 0 clamp(28px,4vw,44px);}
 
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;
-  background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden;}
-.step{background:var(--ink);padding:clamp(20px,2.6vw,30px);}
-.step .n{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--accent);}
-.step h3{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.02em;margin:10px 0 8px;}
-.step p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.5;}
+/* the five steps read as a flow, so they are separated by arrows rather
+   than by dividers, and each carries an icon for what actually happens */
+.flow{display:flex;flex-wrap:nowrap;align-items:stretch;gap:clamp(8px,1.1vw,14px);}
+.step{
+  flex:1 1 0;min-width:0;
+  border:1px solid var(--line);border-radius:3px;
+  padding:clamp(16px,1.9vw,24px);
+  display:flex;flex-direction:column;gap:8px;
+  transition:border-color .25s ease,background .25s ease;
+}
+.step:hover{border-color:color-mix(in srgb,var(--accent) 38%,var(--line));background:var(--accent-tint);}
+.step .ico{width:26px;height:26px;display:block;flex:none;}
+.step .ico *{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.step .n{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted);margin-top:2px;}
+.step h3{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.02em;margin:2px 0 4px;}
+.step p{margin:0;color:var(--muted);font-size:14px;line-height:1.5;}
+.flow-arw{
+  flex:0 0 auto;align-self:center;display:flex;align-items:center;
+  color:color-mix(in srgb,var(--accent) 60%,var(--muted));
+}
+.flow-arw svg{width:17px;height:17px;fill:none;stroke:currentColor;
+  stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+/* five across is too narrow before it is too tall — stack, and turn the
+   arrows to keep pointing along the flow */
+@media (max-width:1080px){
+  .flow{flex-direction:column;gap:clamp(6px,1vw,10px);}
+  .step{flex:none;}
+  .flow-arw{transform:rotate(90deg);}
+}
 
 /* ---------- rates ---------- */
 .tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(14px,2vw,20px);}
@@ -301,28 +324,37 @@ a{color:inherit;text-decoration:none;}
         before anyone writes code — unclear scope, a moving finish line, a price that
         changes after you've committed. This is how we avoid that.</p>
 
-      <div class="steps">
+      <div class="flow">
         <div class="step">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4" width="13" height="9.5" rx="2"/><path d="M6 13.5v3l3.4-3"/><path d="M10 9.5h9a2 2 0 012 2v5a2 2 0 01-2 2h-1v2.5l-2.8-2.5H13"/></svg>
           <span class="n">01</span>
           <h3>A conversation</h3>
           <p>Twenty minutes about what you need and why. Free, and there's no pitch at the end of it.</p>
         </div>
-        <div class="step">
+                <span class="flow-arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14M13.5 7l5 5-5 5"/></svg></span>
+<div class="step">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h7l5 5v14a1.5 1.5 0 01-1.5 1.5h-10A1.5 1.5 0 015 21.5v-17A1.5 1.5 0 016.5 3z"/><path d="M13 2.5v5h5"/><path d="M8.5 12.5h7M8.5 16h7"/></svg>
           <span class="n">02</span>
           <h3>A written scope</h3>
           <p>Exactly what's being built, what it costs, and when it's done. You approve it before anything begins.</p>
         </div>
-        <div class="step">
+                <span class="flow-arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14M13.5 7l5 5-5 5"/></svg></span>
+<div class="step">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4" width="19" height="16" rx="2"/><path d="M2.5 9h19"/><circle cx="7.8" cy="14.5" r="2.1"/><path d="M13 17.2l2.7-3.6 2.8 3.6"/></svg>
           <span class="n">03</span>
           <h3>Design before build</h3>
           <p>You see the thing before it's made, and change it while changing it is cheap. Two rounds included.</p>
         </div>
-        <div class="step">
+                <span class="flow-arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14M13.5 7l5 5-5 5"/></svg></span>
+<div class="step">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4" width="19" height="15" rx="2"/><path d="M2.5 8.2h19"/><circle cx="5.6" cy="6.1" r=".5"/><circle cx="7.6" cy="6.1" r=".5"/><path d="M10.2 11.4l5.4 3.1-2.3.7-.8 2.2z"/></svg>
           <span class="n">04</span>
           <h3>Built in the open</h3>
           <p>A live link from the first week. You watch it come together instead of waiting for a reveal.</p>
         </div>
-        <div class="step">
+                <span class="flow-arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h14M13.5 7l5 5-5 5"/></svg></span>
+<div class="step">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v9A2.5 2.5 0 006.5 21h11a2.5 2.5 0 002.5-2.5v-9"/><path d="M12 2.8v10.4"/><path d="M8.2 6.6L12 2.8l3.8 3.8"/></svg>
           <span class="n">05</span>
           <h3>Handover</h3>
           <p>Everything transfers to accounts in your name. Leave whenever you like — nothing is held hostage.</p>
