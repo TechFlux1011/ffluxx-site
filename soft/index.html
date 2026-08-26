@@ -240,6 +240,64 @@ a{color:inherit;text-decoration:none;}
 .btn .arw{transition:transform .22s ease;}
 .btn:hover .arw{transform:translateX(4px);}
 
+/* ---------- what we're working on: two entry cards ---------- */
+.working{padding:clamp(42px,6.5vw,78px) 0 clamp(6px,1vw,14px);}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,20px);}
+@media (max-width:760px){.two{grid-template-columns:1fr;}}
+.cat-card{
+  border:1px solid var(--line);border-radius:3px;
+  padding:clamp(22px,3vw,32px);display:flex;flex-direction:column;gap:9px;
+  transition:border-color .3s ease,background .3s ease;
+}
+.cat-card:hover,.cat-card:focus-visible{
+  border-color:color-mix(in srgb,var(--accent) 45%,var(--line));
+  background:rgba(123,92,255,.05);
+}
+.cat-card .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);}
+.cat-card h3{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.8vw,30px);
+  letter-spacing:-.025em;margin:2px 0 0;line-height:1.05;}
+/* the description is collapsed to nothing until hover — animating grid rows
+   lets it open to its natural height without hard-coding one */
+.cat-card .reveal{display:grid;grid-template-rows:0fr;opacity:0;
+  transition:grid-template-rows .38s cubic-bezier(.2,.7,.3,1),opacity .3s ease;}
+.cat-card:hover .reveal,.cat-card:focus-visible .reveal{grid-template-rows:1fr;opacity:1;}
+.cat-card .reveal>p{overflow:hidden;margin:0;padding-top:10px;
+  color:var(--muted);font-size:15px;line-height:1.5;}
+.cat-card .reveal>p b{color:var(--paper);font-weight:500;}
+.cat-card .go{margin-top:auto;padding-top:16px;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.08em;color:var(--muted);display:inline-flex;align-items:center;gap:8px;
+  transition:color .25s ease;}
+.cat-card:hover .go{color:var(--accent);}
+.cat-card .go .arw{transition:transform .25s ease;}
+.cat-card:hover .go .arw{transform:translateX(4px);}
+/* nothing to hover on a touch screen, so the descriptions simply stay open */
+@media (hover:none){.cat-card .reveal{grid-template-rows:1fr;opacity:1;}}
+
+/* ---------- category headers ---------- */
+.cat{margin-bottom:clamp(24px,3.5vw,40px);}
+.cat .row{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.cat h2{font-family:var(--display);font-weight:700;font-size:clamp(24px,3.2vw,38px);
+  letter-spacing:-.03em;margin:6px 0 0;}
+.cat .owns{color:var(--muted);font-size:15px;margin:14px 0 0;max-width:58ch;}
+.cat .owns b{color:var(--paper);font-weight:500;}
+
+/* ---------- third-party work ---------- */
+.clients{border-top:1px solid var(--line);padding:clamp(46px,7vw,84px) 0;}
+.client-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:clamp(14px,2vw,20px);}
+.client-card{border:1px solid var(--line);border-radius:3px;padding:clamp(20px,2.6vw,28px);
+  display:flex;flex-direction:column;gap:9px;transition:border-color .25s ease;}
+.client-card:hover{border-color:color-mix(in srgb,var(--accent) 40%,var(--line));}
+.client-card .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);}
+.client-card h3{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.02em;margin:2px 0 0;}
+.client-card p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.5;}
+.client-card .tags{margin:auto 0 0;padding-top:10px;}
+.empty{border:1px dashed var(--line);border-radius:3px;padding:clamp(26px,4vw,42px);}
+.empty h3{font-family:var(--display);font-weight:700;font-size:clamp(19px,2.4vw,25px);
+  letter-spacing:-.02em;margin:0 0 10px;}
+.empty p{color:var(--muted);font-size:15.5px;max-width:54ch;margin:0 0 22px;}
+
 /* ---------- signup ---------- */
 .signup{border-top:1px solid var(--line);padding:clamp(52px,8vw,96px) 0;}
 .signup .wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(26px,5vw,64px);align-items:start;}
@@ -295,6 +353,7 @@ a{color:inherit;text-decoration:none;}
 
 @media (prefers-reduced-motion:reduce){
   *{animation:none !important;transition:none !important;}
+  .cat-card .reveal{grid-template-rows:1fr;opacity:1;}
   html{scroll-behavior:auto;}
   .app{opacity:1;transform:none;}
 }
@@ -318,7 +377,7 @@ a{color:inherit;text-decoration:none;}
       </a>
     </div>
     <nav class="site-nav">
-      <a href="#apps">Apps</a>
+      <a href="#work">Our work</a>
       <a href="/services/">Services</a>
       <a href="#signup" class="hide-sm">Get notified</a>
       <a href="#notes" class="hide-sm">Build notes</a>
@@ -368,11 +427,41 @@ a{color:inherit;text-decoration:none;}
     </div>
   </section>
 
-  <section class="apps" id="apps">
+
+  <section class="working" id="work">
     <div class="wrap">
       <div class="section-head">
-        <h2>What we're building</h2>
-        <span class="eyebrow">2 apps · both in development</span>
+        <h2>What we're working on</h2>
+        <span class="eyebrow">Two kinds of work</span>
+      </div>
+      <div class="two">
+        <a class="cat-card" href="#first-party">
+          <span class="tag">First-party</span>
+          <h3>Our own software</h3>
+          <div class="reveal">
+            <p><b>The IP is ours.</b> We decide what gets built, how it works and when it
+              ships. Nobody commissioned these, and nobody else can take them away.</p>
+          </div>
+          <span class="go">2 apps in development <span class="arw">→</span></span>
+        </a>
+        <a class="cat-card" href="#client-work">
+          <span class="tag">Third-party</span>
+          <h3>Built for other companies</h3>
+          <div class="reveal">
+            <p><b>The IP is the customer's.</b> We build it under contract and hand over the
+              code and the accounts at the end. It carries their name, and it stays theirs.</p>
+          </div>
+          <span class="go">Taking on new work <span class="arw">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="apps" id="first-party">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What we build for ourselves</h2>
+        <span class="eyebrow">First-party · 2 apps in development</span>
       </div>
 
       <!-- Second Home -->
@@ -428,6 +517,40 @@ a{color:inherit;text-decoration:none;}
           <button class="btn" data-want="plant-guide">Get notified about Plant Guide <span class="arw">→</span></button>
         </div>
       </article>
+    </div>
+  </section>
+
+
+  <section class="clients" id="client-work">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What we build for other people</h2>
+        <span class="eyebrow">Third-party · under contract</span>
+      </div>
+
+      <!-- Once there is client work, delete .empty and use .client-grid below.
+           TEMPLATE — copy one card per project:
+
+      <div class="client-grid">
+        <article class="client-card">
+          <span class="who">Client name — or "Confidential"</span>
+          <h3>What it is</h3>
+          <p>One or two lines on what the thing does and what we built.</p>
+          <div class="tags">
+            <span class="pill">Website</span>
+            <span class="pill">2026</span>
+          </div>
+        </article>
+      </div>
+      -->
+
+      <div class="empty">
+        <h3>Nothing here yet</h3>
+        <p>Client projects appear on this page once they're live and the client is happy to
+          be named. If you'd like the first one to be yours, the rates and the process are
+          published rather than hidden behind a call.</p>
+        <a class="btn" href="/services/">See services and rates <span class="arw">→</span></a>
+      </div>
     </div>
   </section>
 
