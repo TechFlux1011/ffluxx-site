@@ -204,6 +204,9 @@ a{color:inherit;text-decoration:none;}
   font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
   padding:5px 9px;border:1px solid var(--line);border-radius:2px;color:var(--muted);
 }
+.pill.live{display:inline-flex;align-items:center;gap:7px;color:var(--ink);
+  background:var(--accent);border-color:var(--accent);font-weight:500;}
+.pill.live .dot{background:var(--ink);}
 .pill.status{display:inline-flex;align-items:center;gap:7px;color:var(--accent);
   border-color:color-mix(in srgb, var(--accent) 40%, var(--line));}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;}
@@ -459,7 +462,7 @@ a{color:inherit;text-decoration:none;}
             <p><b>The IP is ours.</b> We decide what gets built, how it works and when it
               ships. Nobody commissioned these, and nobody else can take them away.</p>
           </div>
-          <span class="go">2 apps in development <span class="arw">→</span></span>
+          <span class="go">3 apps, one you can use today <span class="arw">→</span></span>
         </a>
         <a class="cat-card" href="#client-work">
           <span class="tag">Third-party</span>
@@ -478,11 +481,38 @@ a{color:inherit;text-decoration:none;}
     <div class="wrap">
       <div class="section-head">
         <h2>What we build for ourselves</h2>
-        <span class="eyebrow">First-party · 2 apps in development</span>
+        <span class="eyebrow">First-party · 3 apps · one live</span>
       </div>
 
-      <!-- Second Home -->
+      <!-- fi -->
       <article class="app">
+        <div class="canvas" data-seed="4"><span class="slot">Screens pending</span></div>
+        <div class="meta">
+          <div class="tags">
+            <span class="pill live"><span class="dot"></span>Available now</span>
+            <span class="pill">Web</span>
+          </div>
+          <h3>fi</h3>
+          <p class="lede">A financial independence calculator. Put in what you have, what
+            you add each month and what you spend in a year, and it tells you how long
+            until the investments cover the expenses.</p>
+          <ul class="does">
+            <li>See the year your portfolio starts outgrowing your contributions</li>
+            <li>Model taking some income early instead of waiting for the finish line</li>
+            <li>Change your contribution in phases as your circumstances change</li>
+            <li>Runs entirely in your browser — no account, nothing sent anywhere</li>
+          </ul>
+          <dl class="release">
+            <dt>Platform</dt><dd>Web, any browser</dd>
+            <dt>Status</dt><dd>Live</dd>
+            <dt>Availability</dt><dd>Free, no sign-up</dd>
+          </dl>
+          <a class="btn" href="/fi/">Open fi <span class="arw">&#8594;</span></a>
+        </div>
+      </article>
+
+      <!-- Second Home -->
+      <article class="app flip">
         <div class="canvas" data-seed="1"><span class="slot">Screens pending</span></div>
         <div class="meta">
           <div class="tags">
@@ -509,7 +539,7 @@ a{color:inherit;text-decoration:none;}
       </article>
 
       <!-- Plant Guide -->
-      <article class="app flip">
+      <article class="app">
         <div class="canvas" data-seed="2"><span class="slot">Screens pending</span></div>
         <div class="meta">
           <div class="tags">

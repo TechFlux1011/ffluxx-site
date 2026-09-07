@@ -300,6 +300,11 @@ a{color:inherit;text-decoration:none;}
 .pill.status{
   display:inline-flex;align-items:center;gap:7px;
 }
+.pill.live{
+  display:inline-flex;align-items:center;gap:7px;
+  color:var(--ink);background:var(--accent);border-color:var(--accent);font-weight:500;
+}
+.pill.live .dot{background:var(--ink);}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;}
 .meta h3{
   font-family:var(--display);font-weight:700;
@@ -409,8 +414,8 @@ a{color:inherit;text-decoration:none;}
           <h1>Everything we make, <em>in one place.</em></h1>
         </div>
         <p>
-          ffluxx builds software and video games. <strong>Two divisions, four projects,
-          every one of them still in development.</strong> This is where you can watch them take shape.
+          ffluxx builds software and video games. <strong>Two divisions, five projects, one of them
+          you can use right now.</strong> This is where you can watch the rest take shape.
         </p>
       </div>
     </div>
@@ -421,7 +426,7 @@ a{color:inherit;text-decoration:none;}
     <div class="wrap">
       <div class="div-grid">
         <a class="div-card" href="https://soft.ffluxx.com" style="--accent:var(--violet-lt)">
-          <span class="div-count">Division 01 · 2 projects</span>
+          <span class="div-count">Division 01 · 3 projects</span>
           <h2>ffluxx<span>Soft</span></h2>
           <p class="desc">Apps and tools for everyday problems that nobody has bothered to solve properly.</p>
           <span class="div-domain">soft.ffluxx.com <span class="arw">→</span></span>
@@ -441,7 +446,7 @@ a{color:inherit;text-decoration:none;}
     <div class="wrap">
       <div class="work-head">
         <h2>The work</h2>
-        <span class="eyebrow">4 projects · all in development</span>
+        <span class="eyebrow">5 projects · one live</span>
       </div>
 
       <div class="work-list" id="workList">
@@ -452,6 +457,22 @@ a{color:inherit;text-decoration:none;}
 
         <!-- 01 -->
         <article class="item" style="--accent:var(--violet-lt)">
+          <div class="canvas" data-seed="4" data-color="#7B5CFF">
+            <span class="tag">Cover art pending</span>
+          </div>
+          <div class="meta">
+            <div class="tags">
+              <span class="pill division">ffluxxSoft</span>
+              <span class="pill live"><span class="dot"></span>Available now</span>
+            </div>
+            <h3>fi</h3>
+            <p>A financial independence calculator. Put in what you have, what you add each month and what you spend in a year, and it tells you how long until the investments cover the expenses.</p>
+            <a class="go" href="https://soft.ffluxx.com/fi/">soft.ffluxx.com/fi <span class="arw">&#8594;</span></a>
+          </div>
+        </article>
+
+        <!-- 02 -->
+        <article class="item flip" style="--accent:var(--violet-lt)">
           <div class="canvas" data-seed="1" data-color="#7B5CFF">
             <span class="tag">Cover art pending</span>
           </div>
@@ -466,8 +487,8 @@ a{color:inherit;text-decoration:none;}
           </div>
         </article>
 
-        <!-- 02 -->
-        <article class="item flip" style="--accent:var(--violet-lt)">
+        <!-- 03 -->
+        <article class="item" style="--accent:var(--violet-lt)">
           <div class="canvas" data-seed="2" data-color="#7B5CFF">
             <span class="tag">Cover art pending</span>
           </div>
@@ -482,8 +503,8 @@ a{color:inherit;text-decoration:none;}
           </div>
         </article>
 
-        <!-- 03 -->
-        <article class="item" style="--accent:var(--sulfur)">
+        <!-- 04 -->
+        <article class="item flip" style="--accent:var(--sulfur)">
           <div class="canvas" data-seed="3" data-color="#E9DC4E">
             <span class="tag">Key art pending</span>
           </div>
@@ -498,9 +519,9 @@ a{color:inherit;text-decoration:none;}
           </div>
         </article>
 
-        <!-- 04 -->
-        <article class="item flip" style="--accent:var(--sulfur)">
-          <div class="canvas" data-seed="4" data-color="#E9DC4E">
+        <!-- 05 -->
+        <article class="item" style="--accent:var(--sulfur)">
+          <div class="canvas" data-seed="5" data-color="#E9DC4E">
             <span class="tag">Key art pending</span>
           </div>
           <div class="meta">
